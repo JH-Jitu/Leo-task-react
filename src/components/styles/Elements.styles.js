@@ -30,6 +30,17 @@ export const ButtonStyle = styled.button`
   color: ${(props) => props.textColor};
   border: none;
   cursor: pointer;
+
+  & div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  & img {
+    height: 15px;
+    margin-right: 10px;
+  }
 `;
 
 export const AvailableBtn = styled.select`

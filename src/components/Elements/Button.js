@@ -1,14 +1,17 @@
 import React from "react";
-import { ButtonStyle } from "../styles/Elements.styles";
+import { ButtonStyle, Image } from "../styles/Elements.styles";
 
-const Button = ({ text, bgColor, textColor, borderRadius }) => {
+const Button = ({ text, icon, hasIcon, bgColor, textColor, borderRadius }) => {
   return (
     <ButtonStyle
       bgColor={bgColor}
       textColor={textColor}
       borderRadius={borderRadius}
     >
-      {text}
+      <div>
+        {hasIcon && <Image src={icon} />}
+        <span>{text}</span>
+      </div>
     </ButtonStyle>
   );
 };

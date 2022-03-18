@@ -4,6 +4,7 @@ import { FooterStyle, SelectedList } from "../styles/ContainerSectors.styles";
 import { EventBtn, SmallText } from "../styles/Elements.styles";
 import arrowLight from "./../../assets/Polygon 1.png";
 import arrowDark from "./../../assets/Polygon 1 (2).png";
+import jobIcon from "./../../assets/Dashboard (2).png";
 
 const Footer = () => {
   return (
@@ -19,6 +20,8 @@ const Footer = () => {
           bgColor="#35c3ae"
           textColor="#ffffff"
           borderRadius="5"
+          hasIcon={true}
+          icon={jobIcon}
         />
         <EventBtn
           name="send"
