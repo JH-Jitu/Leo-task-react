@@ -184,3 +184,22 @@ export const LoadedCandidates = styled.div`
 export const LoadMoreBtn = styled.div`
   margin-top: 10px;
 `;
+
+// For Footer part
+export const FooterStyle = styled.div`
+  grid-column: span 24;
+  background-color: #2a3744;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;
+export const SelectedList = styled.div`
+  padding-left: 100px;
+  color: white;
+  display: flex;
+  align-items: center;
+
+  & input {
+    margin-right: 5px;
+  }
+`;

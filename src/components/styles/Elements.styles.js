@@ -47,3 +47,23 @@ export const AvailableBtn = styled.select`
   cursor: pointer;
   color: ${(props) => props.textColor};
 `;
+export const EventBtn = styled.select`
+  margin-right: 30px;
+  border-radius: 5px;
+  padding: 10px 30px;
+  background: ${(props) => props.bgColor};
+  color: ${(props) => props.textColor};
+  border: none;
+
+  appearance: none;
+  padding-left: 10px;
+  background-image: url("${(props) => props.arrowIcon}");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  background-size: 10px;
+  cursor: pointer;
+
+  &:nth-of-type(1) {
+    margin-left: 30px;
+  }
+`;
