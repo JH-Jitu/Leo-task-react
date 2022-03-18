@@ -9,8 +9,8 @@ import jobIcon from "./../../assets/Dashboard (2).png";
 const Footer = () => {
   return (
     <FooterStyle>
-      <SelectedList class="selected-list">
-        <input type="checkbox" checked="true" />
+      <SelectedList>
+        <input type="checkbox" />
         <SmallText> 2 Candidates selected</SmallText>
       </SelectedList>
 

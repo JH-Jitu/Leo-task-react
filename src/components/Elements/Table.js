@@ -2,7 +2,6 @@ import React from "react";
 import {
   Availability,
   Candidate,
-  CandidateList,
   CandidateOptions,
   Contact,
   TableResponsive,
@@ -31,7 +30,7 @@ const Table = () => {
             <th>Candidate</th>
             <th>Rating</th>
             <th>Location</th>
-            <th class="contact">Contact</th>
+            <th>Contact</th>
             <th>Availability</th>
           </tr>
         </thead>
@@ -42,7 +41,7 @@ const Table = () => {
               <input type="checkbox" />
             </td>
             <td>
-              <Candidate class="candidate">
+              <Candidate>
                 <div>
                   <Image src={avatar} alt="" />
                 </div>
@@ -70,7 +69,7 @@ const Table = () => {
               </Contact>
             </td>
             <td>
-              <Availability class="availability">
+              <Availability>
                 <div>
                   <AvailableBtn
                     arrowIcon={arrowIcon}

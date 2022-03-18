@@ -1,14 +1,17 @@
 import { Container } from "./components/styles/ContainerSectors.styles";
 import GlobalStyle from "./components/styles/Global.styles";
 import FullPage from "./components/FullPage";
+import { CandidateProvider } from "./context/CandidateContext";
 
 function App() {
   return (
     <>
-      <GlobalStyle />
-      <Container>
-        <FullPage />
-      </Container>
+      <CandidateProvider>
+        <GlobalStyle />
+        <Container>
+          <FullPage />
+        </Container>
+      </CandidateProvider>
     </>
   );
 }

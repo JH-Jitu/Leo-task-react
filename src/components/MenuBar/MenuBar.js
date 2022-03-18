@@ -17,7 +17,7 @@ import { Image } from "../styles/Elements.styles";
 
 const MenuBar = () => {
   return (
-    <Menu class="menu">
+    <Menu>
       <>
         <MenuItem>
           <Image src={icon1} alt="" />

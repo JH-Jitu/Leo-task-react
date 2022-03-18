@@ -1,4 +1,5 @@
 import React from "react";
+import { useCandidates } from "../../context/CandidateContext";
 import Button from "../Elements/Button";
 import { TitleBarStyle } from "../styles/ContainerSectors.styles";
 import { SmallText } from "../styles/Elements.styles";
@@ -7,21 +8,23 @@ import { TitleItemStyle } from "./../styles/ContainerSectors.styles";
 import { TitleText } from "./../styles/Elements.styles";
 
 const Title = () => {
+  const { candidates } = useCandidates();
+  console.log(candidates);
   return (
-    <TitleBarStyle class="title-bar">
-      <TitleItemStyle class="title-item">
+    <TitleBarStyle>
+      <TitleItemStyle>
         <SmallText>Recruited Agency</SmallText>
-        <TitleText>250 Candidates</TitleText>
+        <TitleText>{candidates.total} Candidates</TitleText>
       </TitleItemStyle>
 
       <TitleItemStyle></TitleItemStyle>
 
-      <TitleItemStyle class="title-item">
+      <TitleItemStyle>
         {/* Search */}
         <SearchBar />
       </TitleItemStyle>
 
-      <TitleItemStyle class="title-item">
+      <TitleItemStyle>
         <Button
           text="Add Candidates"
           bgColor="#2a3744"
