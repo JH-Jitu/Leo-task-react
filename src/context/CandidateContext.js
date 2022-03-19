@@ -9,6 +9,13 @@ export function useCandidates() {
 export function CandidateProvider({ children }) {
   const [loading, setLoading] = useState(true);
   const [candidates, setCandidates] = useState([]);
+  const [loadedCandidates, setLoadedCandidates] = useState(7);
+  const body = JSON.stringify({
+    filters: { slice: [0, loadedCandidates], team_member_id: 471 },
+  });
+  const handleLoadMore = () => {
+    setLoadedCandidates((prevState) => prevState + 7);
+  };
   useEffect(() => {
     const loadCandidates = () => {
       fetch("https://staging-api.recruitd.co.uk/v2/talent_network/15097/list", {
@@ -16,23 +23,29 @@ export function CandidateProvider({ children }) {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({
-          filters: { slice: [0, 10], team_member_id: 471 },
-        }),
+        body: body,
       })
         .then((res) => res.json())
         .then((data) => {
           setCandidates(data);
           setLoading(false);
+          data.results.forEach((candidate) => {
+            candidate.checked = false;
+          });
         });
     };
     loadCandidates();
-  }, []);
+  }, [loadedCandidates, body]);
 
   const value = {
     candidates,
+    setCandidates,
     loading,
+    setLoadedCandidates,
+    handleLoadMore,
   };
+
+  console.log(loadedCandidates);
 
   return (
     <CandidateContext.Provider value={value}>

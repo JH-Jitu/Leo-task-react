@@ -1,4 +1,5 @@
 import React from "react";
+import { useCandidates } from "../../context/CandidateContext";
 import Button from "../Elements/Button";
 import {
   LoadedCandidates,
@@ -9,15 +10,25 @@ import {
 import { SmallText } from "../styles/Elements.styles";
 
 const LoadMore = () => {
+  const { candidates, handleLoadMore } = useCandidates();
+
   return (
     <LoadMoreStyle>
       <div>
-        <SmallText> SHOWING 8 of 240 Candidates </SmallText>
+        <SmallText>
+          {" "}
+          SHOWING {candidates.results.length} of {candidates.total} Candidates{" "}
+        </SmallText>
         <TotalCandidates>
-          <LoadedCandidates loadedPercentage="50" />
+          <LoadedCandidates
+            loadedPercentage={
+              (candidates.results.length * 100) / candidates.total
+            }
+          />
         </TotalCandidates>
         <LoadMoreBtn>
           <Button
+            onClick={handleLoadMore}
             text="Load More Candidates"
             bgColor="#2a3744"
             textColor="#ffffff"

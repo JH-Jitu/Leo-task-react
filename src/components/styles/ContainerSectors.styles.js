@@ -100,6 +100,8 @@ export const CandidateList = styled.div`
 `;
 export const TableResponsive = styled.div`
   overflow-x: auto;
+  overflow-y: auto;
+  max-height: 400px;
 
   & table {
     border-collapse: collapse;
@@ -161,7 +163,8 @@ export const CandidateOptions = styled.div`
 `;
 // For Load More
 export const LoadMoreStyle = styled.div`
-  margin-top: 30px;
+  margin-top: 20px;
+  margin-bottom: 10px;
   display: flex;
   justify-content: center;
   color: #2a3744;
@@ -171,7 +174,6 @@ export const LoadMoreStyle = styled.div`
 export const TotalCandidates = styled.div`
   margin-top: 10px;
   width: 320px;
-  height: 10px;
   background-color: #dfe9f4;
   border-radius: 10px;
 `;
@@ -192,6 +194,12 @@ export const FooterStyle = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  /* For Pagination Purpose (if load more) */
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  height: 50px;
 `;
 export const SelectedList = styled.div`
   padding-left: 100px;
