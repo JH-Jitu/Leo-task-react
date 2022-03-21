@@ -1,6 +1,10 @@
-import React from "react";
+import React, { Fragment } from "react";
 import Button from "../Elements/Button";
-import { FooterStyle, SelectedList } from "../styles/ContainerSectors.styles";
+import {
+  ButtonSection,
+  FooterStyle,
+  SelectedList,
+} from "../styles/ContainerSectors.styles";
 import { EventBtn, SmallText } from "../styles/Elements.styles";
 import arrowLight from "./../../assets/Polygon 1.png";
 import arrowDark from "./../../assets/Polygon 1 (2).png";
@@ -9,6 +13,9 @@ import { useCandidates } from "./../../context/CandidateContext";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import ToastNotifyStyle from "../styles/ToastNotify.styles";
+import { Rating } from "./../styles/ContainerSectors.styles";
+import { MenuButtonStyled, MenuStyled } from "../styles/Dropdown.styles";
+import MenuItemCustom from "../Elements/Dropdown/MenuItemCustom";
 
 const Footer = () => {
   const { selectedCandidates } = useCandidates();
@@ -27,8 +34,7 @@ const Footer = () => {
         </SmallText>
       </SelectedList>
 
-      <div>
-        {/* <ToastNotifyStyle /> */}
+      <ButtonSection>
         <Button
           onClick={handleAddJob}
           text="Add to Job"
@@ -55,7 +61,16 @@ const Footer = () => {
         >
           <option value="">Other Actions</option>
         </EventBtn>
-      </div>
+
+        <MenuStyled
+          width={120}
+          arrowIcon={arrowDark}
+          menuButton={<MenuButtonStyled>Send</MenuButtonStyled>}
+        >
+          <MenuItemCustom title="Send SMS" />
+          <MenuItemCustom title="Send Mail" />
+        </MenuStyled>
+      </ButtonSection>
     </FooterStyle>
   );
 };

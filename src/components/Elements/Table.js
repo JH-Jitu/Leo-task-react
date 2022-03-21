@@ -4,6 +4,7 @@ import {
   Candidate,
   CandidateOptions,
   Contact,
+  Rating,
   TableResponsive,
 } from "./../styles/ContainerSectors.styles";
 import { AvailableBtn, Image } from "../styles/Elements.styles";
@@ -18,6 +19,12 @@ import mailIcon from "./../../assets/gmail (1) 1.png";
 // For passing to the style
 import arrowIcon from "./../../assets/Polygon 1.png";
 import { useCandidates } from "../../context/CandidateContext";
+import ThreeDotButton from "./Dropdown/ThreeDotButton";
+
+import { Menu, MenuItem, MenuButton, SubMenu } from "@szhsin/react-menu";
+import { MenuButtonThreeDot, MenuStyled } from "../styles/Dropdown.styles";
+import MenuItemCustom from "./Dropdown/MenuItemCustom";
+import { toast } from "react-toastify";
 
 const Table = () => {
   const {
@@ -62,6 +69,27 @@ const Table = () => {
 
     setCheckedCandidates(!checkCandidates);
   };
+
+  const options = [
+    {
+      title: "View profile",
+      details: "View the candidates’s profile",
+    },
+    {
+      title: "Remove candidate",
+      details: "Remove from your network",
+    },
+    {
+      title: "Blur candidate",
+      details: "blur candidate",
+    },
+  ];
+
+  const handleClick = (e) => {
+    console.log("click");
+    toast.success(`'${e}' applied for the candidate`);
+  };
+
   return (
     <TableResponsive>
       <table>
@@ -114,11 +142,13 @@ const Table = () => {
                     </Candidate>
                   </td>
                   <td>
-                    <Image src={fulfilledStar} alt="" />
-                    <Image src={fulfilledStar} alt="" />
-                    <Image src={fulfilledStar} alt="" />
-                    <Image src={fulfilledStar} alt="" />
-                    <Image src={emptyStar} alt="" />
+                    <Rating>
+                      <Image src={fulfilledStar} alt="" />
+                      <Image src={fulfilledStar} alt="" />
+                      <Image src={fulfilledStar} alt="" />
+                      <Image src={fulfilledStar} alt="" />
+                      <Image src={emptyStar} alt="" />
+                    </Rating>
                   </td>
                   <td>
                     {candidate.localizations ? (
@@ -148,9 +178,24 @@ const Table = () => {
                           <option value="active">Not Active</option>
                         </AvailableBtn>
                       </div>
-                      <CandidateOptions>
-                        <Image src={availableThreeDot} alt="" />
-                      </CandidateOptions>
+                      <div>
+                        <MenuStyled
+                          menuButton={
+                            <MenuButtonThreeDot>
+                              <Image src={availableThreeDot} alt="" />
+                            </MenuButtonThreeDot>
+                          }
+                        >
+                          {options.map((option) => (
+                            <MenuItemCustom
+                              key={options.indexOf(option)}
+                              onClick={() => handleClick(option.title)}
+                              title={option.title}
+                              details={option.details}
+                            />
+                          ))}
+                        </MenuStyled>
+                      </div>
                     </Availability>
                   </td>
                 </tr>

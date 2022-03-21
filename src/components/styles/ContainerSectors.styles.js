@@ -110,9 +110,27 @@ export const TableResponsive = styled.div`
     border: none;
   }
 
+  & th:first-child,
+  & td:first-child {
+    width: 30px;
+  }
+  & th:nth-child(2),
+  &td:nth-child(2) {
+    width: 300px;
+  }
   & th,
   & td {
-    padding: 0px 30px;
+    padding: 0 10px;
+    width: 150px;
+  }
+
+  & th:first-child,
+  & td:first-child {
+    padding-left: 30px;
+  }
+  & th:last-child,
+  & td:last-child {
+    padding-right: 30px;
   }
 
   & th {
@@ -132,11 +150,6 @@ export const TableResponsive = styled.div`
     height: 45px;
     border-bottom: 1px solid rgba(223, 231, 239, 0.5);
   }
-
-  & td:first-child,
-  & th:first-child {
-    width: 30px;
-  }
 `;
 
 export const Candidate = styled.div`
@@ -149,14 +162,25 @@ export const Candidate = styled.div`
   }
 `;
 
+export const Rating = styled.div`
+  display: flex;;
+  }
+`;
+
 export const Contact = styled.div`
+  display: flex;
   & img:nth-child(2) {
     margin-left: 15px;
   }
 `;
 export const Availability = styled.div`
+  min-width: 150px;
   display: flex;
   justify-content: space-between;
+
+  &:nth-child(2) {
+    margin-left: 40px;
+  }
 `;
 export const CandidateOptions = styled.div`
   cursor: pointer;
@@ -206,8 +230,13 @@ export const SelectedList = styled.div`
   color: white;
   display: flex;
   align-items: center;
+  align-content: center;
 
   & input {
     margin-right: 5px;
   }
+`;
+
+export const ButtonSection = styled.div`
+  display: flex;
 `;
