@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Availability,
   Candidate,
@@ -20,9 +20,29 @@ import arrowIcon from "./../../assets/Polygon 1.png";
 import { useCandidates } from "../../context/CandidateContext";
 
 const Table = () => {
-  const { candidates, setCandidates } = useCandidates();
+  const {
+    candidates,
+    setCandidates,
+    showFooter,
+    setShowFooter,
+    selectedCandidates,
+    setSelectedCandidates,
+  } = useCandidates();
   const [checkCandidates, setCheckedCandidates] = useState(false);
 
+  useEffect(() => {
+    const filtered = candidates.results.filter(
+      (candidate) => candidate.checked === true
+    );
+    if (filtered.length === 0) {
+      setShowFooter(false);
+    } else {
+      setShowFooter(true);
+    }
+    setSelectedCandidates(filtered);
+  }, [candidates, setSelectedCandidates, setShowFooter]);
+
+  // To check one by one
   const handleCheck = (id) => {
     candidates.results.forEach((candidate) => {
       if (candidates.results.indexOf(candidate) === id) {
@@ -31,11 +51,14 @@ const Table = () => {
     });
     setCandidates({ ...candidates });
   };
+
+  // To check all at a time
   const handleCheckAll = () => {
     candidates.results.forEach((candidate) => {
       candidate.checked = !checkCandidates;
     });
     setCandidates({ ...candidates });
+    setShowFooter(!checkCandidates);
 
     setCheckedCandidates(!checkCandidates);
   };

@@ -7,8 +7,15 @@ import SearchBar from "./../Elements/SearchBar";
 import { TitleItemStyle } from "./../styles/ContainerSectors.styles";
 import { TitleText } from "./../styles/Elements.styles";
 
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import ToastNotifyStyle from "../styles/ToastNotify.styles";
+import EventSelect from "../Elements/EventSelect";
+import Dropdown from "../Elements/Dropdown/Dropdown";
+
 const Title = () => {
   const { candidates } = useCandidates();
+  const handleAddCandidate = () => toast.success("Candidate Added! 🔥");
   console.log(candidates);
   return (
     <TitleBarStyle>
@@ -26,11 +33,18 @@ const Title = () => {
 
       <TitleItemStyle>
         <Button
+          onClick={handleAddCandidate}
           text="Add Candidates"
           bgColor="#2a3744"
           textColor="#ffffff"
           borderRadius="5"
         />
+        <div>
+          <EventSelect icon="X">
+            <Dropdown />
+          </EventSelect>
+        </div>
+        <ToastNotifyStyle />
       </TitleItemStyle>
     </TitleBarStyle>
   );
