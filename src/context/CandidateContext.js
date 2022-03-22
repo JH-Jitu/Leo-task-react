@@ -20,38 +20,41 @@ export function CandidateProvider({ children }) {
   const handleLoadMore = () => {
     setLoadedCandidates((prevState) => prevState + 7);
   };
-  // useEffect(() => {
-  //   const loadCandidates = () => {
-  //     fetch("https://staging-api.recruitd.co.uk/v2/talent_network/15097/list", {
-  //       method: "POST",
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //       },
-  //       body: body,
-  //     })
-  //       .then((res) => res.json())
-  //       .then((data) => {
-  //         setCandidates(data);
-  //         setLoading(false);
-  //         data.results.forEach((candidate) => {
-  //           candidate.checked = false;
-  //         });
-  //       });
-  //   };
-  //   loadCandidates();
-  // }, [loadedCandidates, body]);
 
-  const candidatesList = candidatesData;
   useEffect(() => {
     const loadCandidates = () => {
-      setCandidates(candidatesList);
-      setLoading(false);
-      candidatesList.results.forEach((candidate) => {
-        candidate.checked = false;
-      });
+      fetch("https://staging-api.recruitd.co.uk/v2/talent_network/15097/list", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: body,
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          setCandidates(data);
+          setLoading(false);
+          data.results.forEach((candidate) => {
+            candidate.checked = false;
+            candidate.bgColor = "#c5e9f6";
+            candidate.textColor = "white";
+          });
+        });
     };
     loadCandidates();
-  }, [candidatesList, body]);
+  }, [loadedCandidates, body]);
+
+  // const candidatesList = candidatesData;
+  // useEffect(() => {
+  //   const loadCandidates = () => {
+  //     setCandidates(candidatesList);
+  //     setLoading(false);
+  //     candidatesList.results.forEach((candidate) => {
+  //       candidate.checked = false;
+  //     });
+  //   };
+  //   loadCandidates();
+  // }, [candidatesList, body]);
 
   const value = {
     candidates,

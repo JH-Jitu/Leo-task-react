@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import {
   Availability,
   Candidate,
-  CandidateOptions,
   Contact,
   Rating,
   TableResponsive,
@@ -19,23 +18,16 @@ import mailIcon from "./../../assets/gmail (1) 1.png";
 // For passing to the style
 import arrowIcon from "./../../assets/Polygon 1.png";
 import { useCandidates } from "../../context/CandidateContext";
-import ThreeDotButton from "./Dropdown/ThreeDotButton";
-
-import { Menu, MenuItem, MenuButton, SubMenu } from "@szhsin/react-menu";
 import { MenuButtonThreeDot, MenuStyled } from "../styles/Dropdown.styles";
 import MenuItemCustom from "./Dropdown/MenuItemCustom";
 import { toast } from "react-toastify";
 
 const Table = () => {
-  const {
-    candidates,
-    setCandidates,
-    showFooter,
-    setShowFooter,
-    selectedCandidates,
-    setSelectedCandidates,
-  } = useCandidates();
+  const { candidates, setCandidates, setShowFooter, setSelectedCandidates } =
+    useCandidates();
   const [checkCandidates, setCheckedCandidates] = useState(false);
+
+  const [selectValue, setSelectValue] = useState("#c5e9f6");
 
   useEffect(() => {
     const filtered = candidates.results.filter(
@@ -89,6 +81,24 @@ const Table = () => {
     console.log("click");
     toast.success(`'${e}' applied for the candidate`);
   };
+
+  const selectOptions = [
+    {
+      title: "Active",
+      color: "#C5E9F6",
+      textColor: "#0892C1",
+    },
+    {
+      title: "Available",
+      color: "#C9F7E5",
+      textColor: "#00CBA7",
+    },
+    {
+      title: "Not Active",
+      color: "#FEF1F2",
+      textColor: "#F27881",
+    },
+  ];
 
   return (
     <TableResponsive>
@@ -171,11 +181,24 @@ const Table = () => {
                         <AvailableBtn
                           arrowIcon={arrowIcon}
                           textColor="#0892c1"
-                          bgColor="#c5e9f6"
+                          bgColor={candidate.bgColor}
+                          onChange={(e) => {
+                            toast.success(`${e.target.value} has been applied`);
+                            setSelectValue(e.target.value);
+                            candidate.bgColor = e.target.value;
+                            console.log(candidate.bgColor);
+                          }}
                         >
-                          <option value="active">Active</option>
-                          <option value="active">Available</option>
-                          <option value="active">Not Active</option>
+                          {selectOptions.map((option) => {
+                            return (
+                              <option
+                                key={selectOptions.indexOf(option)}
+                                value={option.color}
+                              >
+                                {option.title}
+                              </option>
+                            );
+                          })}
                         </AvailableBtn>
                       </div>
                       <div>

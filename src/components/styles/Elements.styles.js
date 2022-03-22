@@ -3,6 +3,9 @@ import styled from "styled-components";
 // For Full Container
 export const Image = styled.img`
   z-index: 0;
+  margin-left: ${(props) => props.marginLeft}px;
+  margin-right: ${(props) => props.marginRight}px;
+  width: ${(props) => props.width}px;
 `;
 
 export const SmallText = styled.small`

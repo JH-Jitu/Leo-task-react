@@ -8,7 +8,7 @@ import {
 import { EventBtn, SmallText } from "../styles/Elements.styles";
 import arrowLight from "./../../assets/Polygon 1.png";
 import arrowDark from "./../../assets/Polygon 1 (2).png";
-import jobIcon from "./../../assets/Dashboard (2).png";
+import jobIcon from "./../../assets/Job.png";
 import { useCandidates } from "./../../context/CandidateContext";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -16,6 +16,7 @@ import ToastNotifyStyle from "../styles/ToastNotify.styles";
 import { Rating } from "./../styles/ContainerSectors.styles";
 import { MenuButtonStyled, MenuStyled } from "../styles/Dropdown.styles";
 import MenuItemCustom from "../Elements/Dropdown/MenuItemCustom";
+import { Image } from "./../styles/Elements.styles";
 
 const Footer = () => {
   const { selectedCandidates } = useCandidates();
@@ -44,31 +45,35 @@ const Footer = () => {
           hasIcon={true}
           icon={jobIcon}
         />
-        <EventBtn
-          name="send"
-          bgColor="#8cd4ed"
-          textColor="#ffffff"
-          arrowIcon={arrowLight}
-        >
-          <option value="sms">Send SMS</option>
-          <option value="email">Send email</option>
-        </EventBtn>
-        <EventBtn
-          name="others"
-          bgColor="#ffffff"
-          textColor="#2a3744"
-          arrowIcon={arrowDark}
-        >
-          <option value="">Other Actions</option>
-        </EventBtn>
 
         <MenuStyled
-          width={120}
           arrowIcon={arrowDark}
-          menuButton={<MenuButtonStyled>Send</MenuButtonStyled>}
+          menuButton={
+            <MenuButtonStyled
+              marginLeft={30}
+              bgColor="#8cd4ed"
+              textColor="#ffffff"
+            >
+              <Image width={15} marginRight={15} src={jobIcon} />
+              Send
+              <Image width={10} marginLeft={15} src={arrowLight} />
+            </MenuButtonStyled>
+          }
         >
-          <MenuItemCustom title="Send SMS" />
-          <MenuItemCustom title="Send Mail" />
+          <MenuItemCustom width={130} title="Send SMS" />
+          <MenuItemCustom width={130} title="Send Mail" />
+        </MenuStyled>
+
+        <MenuStyled
+          menuButton={
+            <MenuButtonStyled bgColor="#ffffff" textColor="#2a3744">
+              Other Actions
+              <Image width={10} marginLeft={15} src={arrowDark} />
+            </MenuButtonStyled>
+          }
+        >
+          <MenuItemCustom width={130} title="Send SMS" />
+          <MenuItemCustom width={130} title="Send Mail" />
         </MenuStyled>
       </ButtonSection>
     </FooterStyle>

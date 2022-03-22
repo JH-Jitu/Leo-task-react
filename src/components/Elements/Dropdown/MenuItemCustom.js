@@ -1,9 +1,9 @@
 import React from "react";
 import { MenuItemStyled } from "../../styles/Dropdown.styles";
 
-const MenuItemCustom = ({ title, details, onClick }) => {
+const MenuItemCustom = ({ title, details, onClick, ...rest }) => {
   return (
-    <MenuItemStyled onClick={onClick}>
+    <MenuItemStyled {...rest} onClick={onClick}>
       <b>{title}</b>
       <small>{details}</small>
     </MenuItemStyled>

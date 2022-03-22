@@ -16,25 +16,38 @@ export const DropDownStyle = styled.div`
 `;
 
 export const MenuButtonStyled = styled(MenuButton)`
-  width: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 130px;
   margin-right: 30px;
   border-radius: 5px;
-  padding: 10px 30px;
+  padding: 10px 15px;
   background: ${(props) => props.bgColor};
   color: ${(props) => props.textColor};
   border: none;
+  cursor: pointer;
 
+  margin-left: ${(props) => props.marginLeft}px;
+`;
+
+export const DropdownRoundedBtn = styled(MenuButton)`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: ${(props) => props.bgColor};
+  border-radius: 15px;
+  border: none;
+  width: 105px;
+  height: 25px;
   appearance: none;
   padding-left: 10px;
-  background-image: url("${(props) => props.arrowIcon}");
+  /* background-image: url("${(props) => props.arrowIcon}"); */
   background-repeat: no-repeat;
   background-position: right 1rem center;
   background-size: 10px;
   cursor: pointer;
-
-  &:nth-of-type(1) {
-    margin-left: 30px;
-  }
+  color: ${(props) => props.textColor};
 `;
 
 export const MenuButtonThreeDot = styled(MenuButton)`
@@ -56,6 +69,7 @@ export const MenuStyled = styled(Menu)`
 `;
 
 export const MenuItemStyled = styled(MenuItem)`
+  width: ${(props) => props.width}px;
   margin: 0px;
   padding: 10px;
   display: grid;
