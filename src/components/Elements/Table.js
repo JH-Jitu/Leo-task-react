@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import _ from "lodash";
 import {
   Availability,
   Candidate,
@@ -132,11 +133,18 @@ const Table = () => {
                   </td>
                   <td>
                     <Rating>
-                      <Image src={fulfilledStar} alt="" />
-                      <Image src={fulfilledStar} alt="" />
-                      <Image src={fulfilledStar} alt="" />
-                      <Image src={fulfilledStar} alt="" />
-                      <Image src={emptyStar} alt="" />
+                      {candidate.rating === null ? (
+                        _.range(5).map(() => <Image src={emptyStar} alt="" />)
+                      ) : (
+                        <>
+                          {_.range(candidate.rating).map(() => (
+                            <Image src={fulfilledStar} alt="" />
+                          ))}
+                          {_.range(5 - candidate.rating).map(() => (
+                            <Image src={emptyStar} alt="" />
+                          ))}
+                        </>
+                      )}
                     </Rating>
                   </td>
                   <td>
