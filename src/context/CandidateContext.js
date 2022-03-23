@@ -1,5 +1,4 @@
 import React, { useContext, useEffect, useState } from "react";
-import candidatesData from "./../candidatesData/candidatesData.json";
 
 const CandidateContext = React.createContext();
 
@@ -44,18 +43,6 @@ export function CandidateProvider({ children }) {
     loadCandidates();
   }, [loadedCandidates, body]);
 
-  // const candidatesList = candidatesData;
-  // useEffect(() => {
-  //   const loadCandidates = () => {
-  //     setCandidates(candidatesList);
-  //     setLoading(false);
-  //     candidatesList.results.forEach((candidate) => {
-  //       candidate.checked = false;
-  //     });
-  //   };
-  //   loadCandidates();
-  // }, [candidatesList, body]);
-
   const value = {
     candidates,
     setCandidates,
@@ -68,8 +55,6 @@ export function CandidateProvider({ children }) {
     selectedCandidates,
     setSelectedCandidates,
   };
-
-  console.log(loadedCandidates);
 
   return (
     <CandidateContext.Provider value={value}>

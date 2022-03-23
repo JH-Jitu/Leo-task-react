@@ -1,20 +1,6 @@
 import styled from "styled-components";
 import { Menu, MenuItem, MenuButton } from "@szhsin/react-menu";
 
-// For Full Container
-export const DropDownStyle = styled.div`
-  position: absolute;
-  /* top: 10%; */
-  width: 100px;
-  transform: translate(-95%, 0%);
-  background-color: blue;
-  border: 1px solid black;
-  /* border-radius: var(--border-radius); */
-  padding: 1rem;
-  overflow: hidden;
-  /* transition: height var(--speed) ease; */
-`;
-
 export const MenuButtonStyled = styled(MenuButton)`
   display: flex;
   align-items: center;

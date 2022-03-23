@@ -174,13 +174,14 @@ export const Contact = styled.div`
   }
 `;
 export const Availability = styled.div`
-  min-width: 150px;
+  min-width: 250px;
   display: flex;
   justify-content: space-between;
+  align-items: center;
 
-  &:nth-child(2) {
+  /* &:nth-child(2) {
     margin-left: 40px;
-  }
+  } */
 `;
 export const CandidateOptions = styled.div`
   cursor: pointer;

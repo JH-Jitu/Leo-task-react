@@ -6,7 +6,7 @@ import {
   Rating,
   TableResponsive,
 } from "./../styles/ContainerSectors.styles";
-import { AvailableBtn, Image } from "../styles/Elements.styles";
+import { Image } from "../styles/Elements.styles";
 
 import avatar from "./../../assets/Ellipse 8.png";
 import fulfilledStar from "./../../assets/Star 4.png";
@@ -16,18 +16,16 @@ import phoneIcon from "./../../assets/Vector.png";
 import mailIcon from "./../../assets/gmail (1) 1.png";
 
 // For passing to the style
-import arrowIcon from "./../../assets/Polygon 1.png";
 import { useCandidates } from "../../context/CandidateContext";
 import { MenuButtonThreeDot, MenuStyled } from "../styles/Dropdown.styles";
 import MenuItemCustom from "./Dropdown/MenuItemCustom";
 import { toast } from "react-toastify";
+import SelectOption from "./SelectOption";
 
 const Table = () => {
   const { candidates, setCandidates, setShowFooter, setSelectedCandidates } =
     useCandidates();
   const [checkCandidates, setCheckedCandidates] = useState(false);
-
-  const [selectValue, setSelectValue] = useState("#c5e9f6");
 
   useEffect(() => {
     const filtered = candidates.results.filter(
@@ -78,27 +76,8 @@ const Table = () => {
   ];
 
   const handleClick = (e) => {
-    console.log("click");
     toast.success(`'${e}' applied for the candidate`);
   };
-
-  const selectOptions = [
-    {
-      title: "Active",
-      color: "#C5E9F6",
-      textColor: "#0892C1",
-    },
-    {
-      title: "Available",
-      color: "#C9F7E5",
-      textColor: "#00CBA7",
-    },
-    {
-      title: "Not Active",
-      color: "#FEF1F2",
-      textColor: "#F27881",
-    },
-  ];
 
   return (
     <TableResponsive>
@@ -178,28 +157,7 @@ const Table = () => {
                   <td>
                     <Availability>
                       <div>
-                        <AvailableBtn
-                          arrowIcon={arrowIcon}
-                          textColor="#0892c1"
-                          bgColor={candidate.bgColor}
-                          onChange={(e) => {
-                            toast.success(`${e.target.value} has been applied`);
-                            setSelectValue(e.target.value);
-                            candidate.bgColor = e.target.value;
-                            console.log(candidate.bgColor);
-                          }}
-                        >
-                          {selectOptions.map((option) => {
-                            return (
-                              <option
-                                key={selectOptions.indexOf(option)}
-                                value={option.color}
-                              >
-                                {option.title}
-                              </option>
-                            );
-                          })}
-                        </AvailableBtn>
+                        <SelectOption candidate={candidate} />
                       </div>
                       <div>
                         <MenuStyled

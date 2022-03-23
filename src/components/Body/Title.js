@@ -7,14 +7,13 @@ import SearchBar from "./../Elements/SearchBar";
 import { TitleItemStyle } from "./../styles/ContainerSectors.styles";
 import { TitleText } from "./../styles/Elements.styles";
 
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import ToastNotifyStyle from "../styles/ToastNotify.styles";
 
 const Title = () => {
   const { candidates } = useCandidates();
   const handleAddCandidate = () => toast.success("Candidate Added! 🔥");
-  console.log(candidates);
 
   return (
     <TitleBarStyle>

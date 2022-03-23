@@ -1,19 +1,18 @@
-import React, { Fragment } from "react";
+import React from "react";
 import Button from "../Elements/Button";
 import {
   ButtonSection,
   FooterStyle,
   SelectedList,
 } from "../styles/ContainerSectors.styles";
-import { EventBtn, SmallText } from "../styles/Elements.styles";
+import { SmallText } from "../styles/Elements.styles";
 import arrowLight from "./../../assets/Polygon 1.png";
 import arrowDark from "./../../assets/Polygon 1 (2).png";
 import jobIcon from "./../../assets/Job.png";
 import { useCandidates } from "./../../context/CandidateContext";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import ToastNotifyStyle from "../styles/ToastNotify.styles";
-import { Rating } from "./../styles/ContainerSectors.styles";
+// import ToastNotifyStyle from "../styles/ToastNotify.styles";
 import { MenuButtonStyled, MenuStyled } from "../styles/Dropdown.styles";
 import MenuItemCustom from "../Elements/Dropdown/MenuItemCustom";
 import { Image } from "./../styles/Elements.styles";
@@ -25,6 +24,12 @@ const Footer = () => {
       `${selectedCandidates.length} Candidate(s) added to the job! 🎉`
     );
   };
+  const handleClick = (e) => {
+    toast.success(`${e} applied for ${selectedCandidates.length} candidate(s)`);
+  };
+
+  const sendOptions = ["Send SMS", "Send Mail"];
+  const otherActions = ["Action 1", "Action 2"];
   return (
     <FooterStyle>
       <SelectedList>
@@ -60,8 +65,13 @@ const Footer = () => {
             </MenuButtonStyled>
           }
         >
-          <MenuItemCustom width={130} title="Send SMS" />
-          <MenuItemCustom width={130} title="Send Mail" />
+          {sendOptions.map((option) => (
+            <MenuItemCustom
+              onClick={() => handleClick(option)}
+              width={130}
+              title={option}
+            />
+          ))}
         </MenuStyled>
 
         <MenuStyled
@@ -72,8 +82,13 @@ const Footer = () => {
             </MenuButtonStyled>
           }
         >
-          <MenuItemCustom width={130} title="Send SMS" />
-          <MenuItemCustom width={130} title="Send Mail" />
+          {otherActions.map((action) => (
+            <MenuItemCustom
+              onClick={() => handleClick(action)}
+              width={130}
+              title={action}
+            />
+          ))}
         </MenuStyled>
       </ButtonSection>
     </FooterStyle>
